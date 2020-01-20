@@ -1,17 +1,21 @@
 import fetch from 'isomorphic-unfetch';
 import Layout from '../components/Layout';
+import Link from 'next/link';
 
 const Post = (props) => {
   const { post } = props;
   return (
     <div>
       <Layout />
-      {post.title.rendered}
+      <Link href="/">
+        <a>Home page</a>
+      </Link>
+      <p>{post.title.rendered}</p>
     </div>
   );
 }
 
-Post.getInitialProps = async (context) => {
+Post.getInitialProps = async (context) => { 
 
   console.log('isBrowser', process.browser);
   console.log("context", context.query);
